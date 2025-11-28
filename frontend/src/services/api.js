@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'https://assignment2-backend-patrick.onrender.com/api/v1'; 
+const API_URL = 'https://one01205106-comp3123-assignment2.onrender.com/api/v1'; 
 
 const api = axios.create({
     baseURL: API_URL,
