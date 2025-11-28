@@ -1,0 +1,283 @@
+{
+	"info": {
+		"_postman_id": "f1c18c8e-7422-41a4-84ca-dde2ea982b66",
+		"name": "Comp3123_Assignment1",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "48588167",
+		"_collection_link": "https://infinitewumbo-8822613.postman.co/workspace/Comp3123~f7cb3419-4267-4826-be08-f3f6a9df6ef6/collection/48588167-f1c18c8e-7422-41a4-84ca-dde2ea982b66?action=share&source=collection_link&creator=48588167"
+	},
+	"item": [
+		{
+			"name": "CreateUser",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"username\": \"tester\",\r\n  \"email\": \"tester@example.com\",\r\n  \"password\": \"SecurePassword123\" \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/v1/user/signup",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"user",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"username\": \"tester\",\r\n  \"email\": \"tester@example.com\",\r\n  \"password\": \"SecurePassword123\" \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/v1/user/login",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"user",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateEmployee",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTdjZTMzZmZmZWNiOTZjNTM0MGYyNCIsImlhdCI6MTc2MDAyMjI1NSwiZXhwIjoxNzYwMDI1ODU1fQ.NhtcKCm6WBGwCKNlJk7qKGAlnXu9P4AR7l_-McTDY58",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"first_name\": \"Alice\",\r\n  \"last_name\": \"Johnson\",\r\n  \"email\": \"alice.johnson@example.com\",\r\n  \"position\": \"Designer\",\r\n  \"salary\": 85000,\r\n  \"date_of_joining\": \"2023-08-10T00:00:00.000Z\",\r\n  \"department\": \"Design\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/emp/employees",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"emp",
+						"employees"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ListEmployees",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTdjZTMzZmZmZWNiOTZjNTM0MGYyNCIsImlhdCI6MTc2MDAyMjI1NSwiZXhwIjoxNzYwMDI1ODU1fQ.NhtcKCm6WBGwCKNlJk7qKGAlnXu9P4AR7l_-McTDY58",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/emp/employees",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"emp",
+						"employees"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetEmployee",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTdjZTMzZmZmZWNiOTZjNTM0MGYyNCIsImlhdCI6MTc2MDAyMjI1NSwiZXhwIjoxNzYwMDI1ODU1fQ.NhtcKCm6WBGwCKNlJk7qKGAlnXu9P4AR7l_-McTDY58",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/emp/employees/68e7d46bd708b4e1537a87eb",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"emp",
+						"employees",
+						"68e7d46bd708b4e1537a87eb"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateEmployee",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTdjZTMzZmZmZWNiOTZjNTM0MGYyNCIsImlhdCI6MTc2MDAyMjI1NSwiZXhwIjoxNzYwMDI1ODU1fQ.NhtcKCm6WBGwCKNlJk7qKGAlnXu9P4AR7l_-McTDY58",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"employee_id\": \"64c9e5a3d9f3c1a5c9b4e8a4\",\r\n  \"first_name\": \"Alice\",\r\n  \"last_name\": \"Johnson\",\r\n  \"email\": \"alice.johnson@example.com\",\r\n  \"position\": \"Senior Designer\",\r\n  \"salary\": 95000,\r\n  \"date_of_joining\": \"2023-08-10T00:00:00.000Z\",\r\n  \"department\": \"Design\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/emp/employees/68e7d46bd708b4e1537a87eb",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"emp",
+						"employees",
+						"68e7d46bd708b4e1537a87eb"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteEmployee",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTdjZTMzZmZmZWNiOTZjNTM0MGYyNCIsImlhdCI6MTc2MDAyMjI1NSwiZXhwIjoxNzYwMDI1ODU1fQ.NhtcKCm6WBGwCKNlJk7qKGAlnXu9P4AR7l_-McTDY58",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/emp/employees?eid=68e7d46bd708b4e1537a87eb",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"emp",
+						"employees"
+					],
+					"query": [
+						{
+							"key": "eid",
+							"value": "68e7d46bd708b4e1537a87eb"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "baseURL",
+			"value": "",
+			"type": "default"
+		}
+	]
+}
