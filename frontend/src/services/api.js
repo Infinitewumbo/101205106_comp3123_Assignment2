@@ -20,7 +20,7 @@ export const login = (user) => api.post('/user/login', user);
 export const signup = (user) => api.post('/user/signup', user);
 export const getEmployees = () => api.get('/emp/employees');
 export const getEmployeeById = (id) => api.get(`/emp/employees/${id}`);
-export const deleteEmployee = (id) => api.delete(`/emp/employees/${id}`);
+export const deleteEmployee = (id) => api.delete(`/emp/employees?eid=${id}`);
 export const searchEmployees = (query) => api.get(`/emp/search?q=${query}`);
 
 export const addEmployee = (formData) => api.post('/emp/employees', formData, {
