@@ -7,7 +7,6 @@ const EmployeeList = () => {
     const [employees, setEmployees] = useState([]);
     const navigate = useNavigate();
 
-    // 1. Fetch data when the page loads
     useEffect(() => {
         fetchEmployees();
     }, []);
@@ -17,24 +16,24 @@ const EmployeeList = () => {
             const response = await getEmployees();
             setEmployees(response.data);
         } catch (err) {
-            alert('Failed to fetch employees. Please log in again.');
-            navigate('/'); // Redirect to login if token is expired
+            console.error("Fetch Error:", err);
+            // Don't redirect immediately so we can see the error if it happens
         }
     };
 
-    // 2. Handle Delete
     const handleDelete = async (id) => {
+        // e.stopPropagation() prevents clicking the row when deleting
         if (window.confirm("Are you sure you want to delete this employee?")) {
             try {
                 await deleteEmployee(id);
-                fetchEmployees(); // Refresh list after delete
+                // Remove from local list immediately so we don't have to reload
+                setEmployees(employees.filter(emp => emp.employee_id !== id));
             } catch (err) {
                 alert('Error deleting employee');
             }
         }
     };
 
-    // 3. Handle Logout
     const handleLogout = () => {
         localStorage.removeItem('token');
         navigate('/');
@@ -67,16 +66,17 @@ const EmployeeList = () => {
                 </thead>
                 <tbody>
                     {employees.map((emp) => (
-                        <tr key={emp._id}>
+                        <tr key={emp.employee_id}> 
+                            {/* FIX: Use employee_id instead of _id */}
                             <td>{emp.first_name}</td>
                             <td>{emp.last_name}</td>
-                            <td>{emp.email_id || emp.email}</td>
+                            <td>{emp.email}</td>
                             <td>
                                 <Button 
                                     variant="info" 
                                     size="sm" 
                                     className="me-2"
-                                    onClick={() => navigate(`/employees/view/${emp._id}`)}
+                                    onClick={() => navigate(`/employees/view/${emp.employee_id}`)}
                                 >
                                     View
                                 </Button>
@@ -84,14 +84,14 @@ const EmployeeList = () => {
                                     variant="warning" 
                                     size="sm" 
                                     className="me-2"
-                                    onClick={() => navigate(`/employees/edit/${emp._id}`)}
+                                    onClick={() => navigate(`/employees/edit/${emp.employee_id}`)}
                                 >
                                     Edit
                                 </Button>
                                 <Button 
                                     variant="danger" 
                                     size="sm"
-                                    onClick={() => handleDelete(emp._id)}
+                                    onClick={() => handleDelete(emp.employee_id)}
                                 >
                                     Delete
                                 </Button>
